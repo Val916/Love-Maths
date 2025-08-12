@@ -44,8 +44,8 @@ function runGame(gameType) {
         displayMultiplyQuestion(num1, num2);
     } else if (gameType === "subtract" ) {
         displaySubtractQuestion(num1, num2);
-    }  else if (gameType === "division" ) {
-        displayDivisionQuestion(num1, num2);
+    } else if (gameType === "division"){
+	    displayDivisionQuestion(num1,num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
@@ -91,8 +91,8 @@ function calculateCorrectAnswer() {
         return [operand1 * operand2, "multiply"];
     } else if (operator === "-") {
         return [operand1 - operand2, "subtract"];
-    } else if (operator === "/") {
-        return [operand1 / operand2, "division"];
+    } else if (operator ==="/") {
+		return [operand1 / operand2, "division"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -144,16 +144,10 @@ function displayMultiplyQuestion(operand1, operand2) {
 
 }
 
+
 function displayDivisionQuestion(operand1, operand2) {
-
-    // Ensure we always get integer results by making operand1 a multiple of operand2
-    // Use the smaller number as divisor and create a proper dividend
-    let divisor = Math.min(operand1, operand2);
-    let multiplier = Math.max(operand1, operand2);
-    let dividend = divisor * multiplier;
-
-    document.getElementById("operand1").textContent = dividend;
-    document.getElementById("operand2").textContent = divisor;
-    document.getElementById('operator').textContent = "/";
-    
+    operand1 = operand1 * operand2;
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "/";
 }
